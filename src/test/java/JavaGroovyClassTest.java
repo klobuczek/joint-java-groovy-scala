@@ -1,6 +1,6 @@
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class JavaGroovyClassTest {
     @Test
@@ -17,4 +17,9 @@ public class JavaGroovyClassTest {
     public void testScalaHello() {
         assertEquals("scala", new GroovyClass().scalaHello());
     }
+
+//    @Test
+//    public void testKotlinHello() {
+//        assertEquals("kotlin", new GroovyClass().kotlinHello());
+//    }
 }

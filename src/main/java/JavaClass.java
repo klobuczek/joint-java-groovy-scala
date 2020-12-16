@@ -10,4 +10,8 @@ public class JavaClass {
     public String scalaHello() {
         return new ScalaClass().hello();
     }
+
+//    public String kotlinHello() {
+//        return new KotlinClass().hello();
+//    }
 }
