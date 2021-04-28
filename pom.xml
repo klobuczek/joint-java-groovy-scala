@@ -9,23 +9,15 @@
     <version>${revision}</version>
     <packaging>pom</packaging>
 
-    <modules>
-        <module>core</module>
-        <module>module-a</module>
-    </modules>
-
     <properties>
         <revision>1.0-SNAPSHOT</revision>
-        <groovy-version>3.0.6</groovy-version>
+        <groovy-version>3.0.8</groovy-version>
         <jersey-version>2.32</jersey-version>
-        <scala-major-version>2.12</scala-major-version>
-        <scala-minor-version>10</scala-minor-version>
         <maven-compiler-plugin-version>3.8.1</maven-compiler-plugin-version>
         <maven-surefire-plugin-version>2.22.2</maven-surefire-plugin-version>
-        <scala-maven-plugin-version>4.4.0</scala-maven-plugin-version>
-        <gmavenplus-plugin-version>1.11.0</gmavenplus-plugin-version>
-        <kotlin.version>1.4.21</kotlin.version>
-        <junit.version>5.7.0</junit.version>
+        <gmavenplus-plugin-version>1.12.1</gmavenplus-plugin-version>
+        <kotlin.version>1.4.32</kotlin.version>
+        <junit.version>5.7.1</junit.version>
         <maven.assembly.plugin.version>2.4</maven.assembly.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -52,7 +44,7 @@
             <plugin>
                 <groupId>org.codehaus.gmavenplus</groupId>
                 <artifactId>gmavenplus-plugin</artifactId>
-                <version>${gmavenplus-plugin-version}</version>
+                <version>1.12.1</version>
                 <executions>
                     <execution>
                         <goals>
@@ -69,35 +61,13 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>net.alchim31.maven</groupId>
-                <artifactId>scala-maven-plugin</artifactId>
-                <version>${scala-maven-plugin-version}</version>
-                <executions>
-
-                    <execution>
-                        <id>scala-compile</id>
-                        <phase>process-sources</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>scala-test-compile</id>
-                        <phase>process-test-sources</phase>
-                        <goals>
-                            <goal>testCompile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <version>${kotlin.version}</version>
                 <executions>
                     <execution>
                         <id>compile</id>
-                        <phase>compile</phase>
+                        <phase>process-sources</phase>
                         <goals>
                             <goal>compile</goal>
                         </goals>
@@ -106,13 +76,12 @@
                                 <source>src/main/groovy</source>
                                 <source>src/main/java</source>
                                 <source>src/main/kotlin</source>
-                                <source>src/main/scala</source>
                             </sourceDirs>
                         </configuration>
                     </execution>
                     <execution>
                         <id>test-compile</id>
-                        <phase>test-compile</phase>
+                        <phase>process-test-sources</phase>
                         <goals>
                             <goal>test-compile</goal>
                         </goals>
@@ -121,7 +90,7 @@
                                 <source>src/test/groovy</source>
                                 <source>src/test/java</source>
                                 <source>src/test/kotlin</source>
-                                <source>src/test/scala</source>
+                                <source>target/generated-sources/groovy-stubs/main</source>
                             </sourceDirs>
                         </configuration>
                     </execution>
@@ -129,31 +98,6 @@
                 <configuration>
                     <jvmTarget>1.8</jvmTarget>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>${maven.assembly.plugin.version}</version>
-                <configuration>
-                    <runOnlyAtExecutionRoot>true</runOnlyAtExecutionRoot>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-<!--                    <archive>-->
-<!--                        <manifest>-->
-<!--                            <mainClass>Main</mainClass>-->
-<!--                        </manifest>-->
-<!--                    </archive>-->
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
@@ -163,11 +107,6 @@
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy</artifactId>
             <version>${groovy-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-library</artifactId>
-            <version>${scala-major-version}.${scala-minor-version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
