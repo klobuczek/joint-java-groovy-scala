@@ -18,4 +18,9 @@ open class KotlinClassTest {
     fun testJavaHello() {
         assertEquals("java", KotlinClass().javaHello())
     }
+
+//    @Test
+//    fun testScalaHello() {
+//        assertEquals("scala", KotlinClass().scalaHello())
+//    }
 }

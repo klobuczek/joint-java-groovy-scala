@@ -12,4 +12,7 @@ class GroovyClass {
     String kotlinHello() {
         new KotlinClass().hello()
     }
+    String scalaHello() {
+        new ScalaClass().hello()
+    }
 }

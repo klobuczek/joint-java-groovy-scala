@@ -18,4 +18,8 @@ class KotlinGroovyClassTest {
     fun testKotlinHello() {
         assertEquals("kotlin", GroovyClass().kotlinHello())
     }
+    @Test
+    fun testScalaHello() {
+        assertEquals("scala", GroovyClass().scalaHello())
+    }
 }

@@ -19,4 +19,11 @@ class GroovyJavaClassTest {
     void testKotlinHello() {
         assertEquals('kotlin', new JavaClass().kotlinHello())
     }
+
+
+    @Test
+    void testScalaHello() {
+        assertEquals('scala', new JavaClass().scalaHello())
+    }
+
 }
